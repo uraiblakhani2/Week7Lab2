@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+using UnityEngine.SceneManagement;  
+
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +12,7 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
 
     public int score;
+    public Text ScoreText;
 
     public static GameManager Instance {
         get {
@@ -25,8 +30,12 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
  
-    void UpdateScore()
+    public void UpdateScore()
     {
-        // TODO
+          score++;
+        ScoreText.text = "Score: " + score;
+        if(score == 10){
+             SceneManager.LoadScene("MainMenu");
+        }
     }
 }
